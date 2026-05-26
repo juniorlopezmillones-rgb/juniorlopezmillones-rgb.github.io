@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaTech AI | Soluciones Tecnológicas</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#020617;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::-webkit-scrollbar{
+      width:10px;
+    }
+
+    body::-webkit-scrollbar-thumb{
+      background:#38bdf8;
+      border-radius:20px;
+    }
+
+    nav{
+      width:100%;
+      padding:20px 8%;
+      position:fixed;
+      top:0;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(2,6,23,0.85);
+      backdrop-filter:blur(12px);
+      z-index:1000;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo{
+      font-size:2rem;
+      font-weight:800;
+      color:#38bdf8;
+      letter-spacing:1px;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:30px;
+    }
+
+    nav ul li a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    nav ul li a:hover{
+      color:#38bdf8;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:0 8%;
+      background:
+      linear-gradient(rgba(2,6,23,0.8), rgba(2,6,23,0.95)),
+      url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      text-align:center;
+      position:relative;
+    }
+
+    .hero-content h1{
+      font-size:5rem;
+      margin-bottom:20px;
+      line-height:1.1;
+    }
+
+    .hero-content span{
+      color:#38bdf8;
+    }
+
+    .hero-content p{
+      max-width:900px;
+      margin:auto;
+      font-size:1.2rem;
+      color:#cbd5e1;
+      margin-bottom:40px;
+    }
+
+    .buttons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:15px 35px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:700;
+      transition:0.3s;
+      display:inline-block;
+      border: none;
+      cursor: pointer;
+    }
+
+    .primary{
+      background:#38bdf8;
+      color:#020617;
+    }
+
+    .secondary{
+      border:2px solid #38bdf8;
+      color:#38bdf8;
+      background: transparent;
+    }
+
+    .btn:hover{
+      transform:translateY(-5px) scale(1.03);
+      box-shadow:0 10px 30px rgba(56,189,248,0.4);
+    }
+
+    section{
+      padding:120px 8%;
+    }
+
+    .title{
+      text-align:center;
+      margin-bottom:70px;
+    }
+
+    .title h2{
+      font-size:3rem;
+      color:#38bdf8;
+      margin-bottom:15px;
+    }
+
+    .title p{
+      color:#cbd5e1;
+      max-width:700px;
+      margin:auto;
+    }
+
+    .services{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:#0f172a;
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:25px;
+      padding:40px;
+      transition:0.4s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:'';
+      position:absolute;
+      width:200px;
+      height:200px;
+      background:#38bdf8;
+      filter:blur(120px);
+      top:-50px;
+      right:-50px;
+      opacity:0.2;
+    }
+
+    .card:hover{
+      transform:translateY(-12px);
+      border-color:#38bdf8;
+    }
+
+    .card h3{
+      margin-bottom:20px;
+      color:#38bdf8;
+      font-size:1.5rem;
+    }
+
+    .icon-wrapper {
+      font-size: 2rem;
+      color: #38bdf8;
+      margin-bottom: 15px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .stat-box{
+      background:linear-gradient(135deg,#0f172a,#1e293b);
+      padding:50px 20px;
+      text-align:center;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat-box h2{
+      font-size:3rem;
+      color:#38bdf8;
+    }
+
+    .about{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:50px;
+      align-items:center;
+    }
+
+    .about img{
+      width:100%;
+      border-radius:25px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    .about-text h2{
+      font-size:3rem;
+      margin-bottom:20px;
+      color:#38bdf8;
+    }
+
+    .about-text p{
+      color:#cbd5e1;
+      margin-bottom:20px;
+      line-height:1.8;
+    }
+
+    .tech-stack{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:20px;
+    }
+
+    .tech{
+      background:#0f172a;
+      padding:20px 35px;
+      border-radius:15px;
+      border:1px solid rgba(255,255,255,0.08);
+      transition:0.3s;
+    }
+
+    .tech:hover{
+      background:#38bdf8;
+      color:#020617;
+      transform:scale(1.05);
+    }
+
+    .pricing{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .price-card{
+      background:#0f172a;
+      border-radius:25px;
+      padding:50px 30px;
+      text-align:center;
+      border:1px solid rgba(255,255,255,0.08);
+      transition:0.4s;
+    }
+
+    .price-card:hover{
+      transform:translateY(-10px);
+      border-color:#38bdf8;
+    }
+
+    .price-card h3{
+      color:#38bdf8;
+      margin-bottom:20px;
+      font-size:2rem;
+    }
+
+    .price{
+      font-size:4rem;
+      margin-bottom:20px;
+      font-weight:700;
+    }
+
+    .price-card ul{
+      list-style:none;
+      margin-bottom:30px;
+    }
+
+    .price-card ul li{
+      margin:15px 0;
+      color:#cbd5e1;
+    }
+
+    .contact{
+      background:linear-gradient(135deg,#1d4ed8,#020617);
+      padding:80px;
+      border-radius:30px;
+      text-align:center;
+    }
+
+    .contact h2{
+      font-size:3rem;
+      margin-bottom:20px;
+    }
+
+    .contact p{
+      color:#e2e8f0;
+      margin-bottom:30px;
+    }
+
+    form{
+      max-width:700px;
+      margin:auto;
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    input, textarea{
+      padding:18px;
+      border:none;
+      border-radius:12px;
+      background:#0f172a;
+      color:white;
+      outline:none;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    textarea{
+      resize:none;
+      height:150px;
+    }
+
+    footer{
+      padding:40px;
+      text-align:center;
+      background:#010409;
+      color:#94a3b8;
+      border-top:1px solid rgba(255,255,255,0.05);
+    }
+
+    .badge {
+      background: #ef4444;
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      display: inline-block;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    @media(max-width:900px){
+      .hero-content h1{
+        font-size:3rem;
+      }
+      nav ul{
+        display:none;
+      }
+      .contact{
+        padding:40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo" style="display:flex;align-items:center;gap:15px;">
+      <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" style="width:55px;height:55px;border-radius:50%;background:white;padding:8px;box-shadow:0 5px 20px rgba(56,189,248,0.5);">
+      <span>NovaTech AI</span>
+    </div>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#estadisticas">Resultados</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#planes">Planes</a></li>
+      <li><a href="#tienda">Tienda</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <h1>Revoluciona tu negocio con <span>Inteligencia Artificial</span></h1>
+      <p>
+        NovaTech AI desarrolla plataformas digitales, automatización inteligente,
+        páginas web avanzadas y soluciones tecnológicas modernas para empresas,
+        startups y emprendimientos que quieren crecer en el mundo digital.
+      </p>
+      <div class="buttons">
+        <a href="#contacto" class="btn primary">Empezar Ahora</a>
+        <a href="#servicios" class="btn secondary">Explorar Servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="title">
+      <h2>Servicios Premium</h2>
+      <p>Tecnología moderna creada para mejorar productividad, ventas y automatización.</p>
+    </div>
+    <div class="services">
+      <div class="card">
+        <h3>🌐 Desarrollo Web Full Stack</h3>
+        <p>Creamos plataformas modernas con diseño futurista, optimización SEO y máxima velocidad.</p>
+      </div>
+      <div class="card">
+        <h3>🤖 Inteligencia Artificial</h3>
+        <p>Implementamos chatbots, asistentes virtuales y sistemas inteligentes automatizados.</p>
+      </div>
+      <div class="card">
+        <h3>📱 Apps Móviles</h3>
+        <p>Aplicaciones Android e iOS modernas, rápidas y seguras para cualquier emprendimiento.</p>
+      </div>
+      <div class="card">
+        <h3>☁️ Cloud Computing</h3>
+        <p>Sistemas escalables y almacenamiento seguro en la nube para proteger tus datos.</p>
+      </div>
+      <div class="card">
+        <h3>🔒 Ciberseguridad</h3>
+        <p>Protección avanzada contra ataques digitales y monitoreo de seguridad empresarial.</p>
+      </div>
+      <div class="card">
+        <h3>📊 Análisis de Datos</h3>
+        <p>Transformamos información en decisiones inteligentes mediante dashboards interactivos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="estadisticas">
+    <div class="title">
+      <h2>Resultados Reales</h2>
+      <p>Empresas y emprendimientos confían en nuestra tecnología.</p>
+    </div>
+    <div class="stats">
+      <div class="stat-box">
+        <h2>+500</h2>
+        <p>Clientes satisfechos</p>
+      </div>
+      <div class="stat-box">
+        <h2>+120</h2>
+        <p>Proyectos completados</p>
+      </div>
+      <div class="stat-box">
+        <h2>99%</h2>
+        <p>Seguridad digital</p>
+      </div>
+      <div class="stat-box">
+        <h2>24/7</h2>
+        <p>Soporte técnico</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="nosotros">
+    <div class="about">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop" alt="Equipo tecnológico">
+      <div class="about-text">
+        <h2>Sobre NovaTech AI</h2>
+        <p>Somos una empresa enfocada en innovación tecnológica, automatización inteligente y desarrollo digital.</p>
+        <p>Utilizamos herramientas avanzadas para crear soluciones rápidas, seguras y escalables.</p>
+        <p>Nuestro equipo combina creatividad, programación y diseño para construir experiencias digitales impactantes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="title">
+      <h2>Tecnologías Utilizadas</h2>
+      <p>Herramientas modernas usadas en proyectos profesionales.</p>
+    </div>
+    <div class="tech-stack">
+      <div class="tech">HTML5</div>
+      <div class="tech">CSS3</div>
+      <div class="tech">JavaScript</div>
+      <div class="tech">React</div>
+      <div class="tech">Node.js</div>
+      <div class="tech">Python</div>
+      <div class="tech">Firebase</div>
+      <div class="tech">MongoDB</div>
+      <div class="tech">AI</div>
+      <div class="tech">Cloud</div>
+    </div>
+  </section>
+
+  <section id="planes">
+    <div class="title">
+      <h2>Planes Disponibles</h2>
+      <p>Elige la solución perfecta para tu proyecto.</p>
+    </div>
+    <div class="pricing">
+      <div class="price-card">
+        <h3>Básico</h3>
+        <div class="price">$99</div>
+        <ul>
+          <li>Landing Page</li>
+          <li>Diseño Responsive</li>
+          <li>Soporte básico</li>
+          <li>Optimización SEO</li>
+        </ul>
+        <a href="#contacto" class="btn primary">Contratar Plan</a>
+      </div>
+      <div class="price-card">
+        <h3>Profesional</h3>
+        <div class="price">$299</div>
+        <ul>
+          <li>Página web completa</li>
+          <li>Base de datos</li>
+          <li>Panel administrador</li>
+          <li>Automatización</li>
+        </ul>
+        <a href="#contacto" class="btn primary">Contratar Plan</a>
+      </div>
+      <div class="price-card">
+        <h3>Empresarial</h3>
+        <div class="price">$999</div>
+        <ul>
+          <li>IA personalizada</li>
+          <li>Cloud premium</li>
+          <li>Apps móviles</li>
+          <li>Seguridad avanzada</li>
+        </ul>
+        <a href="#contacto" class="btn primary">Contratar Plan</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="tienda">
+    <div id="cart-panel" style="position:fixed;right:-450px;top:0;width:420px;height:100vh;background:#0f172a;z-index:999999;padding:30px;transition:0.5s;overflow-y:auto;border-left:2px solid #38bdf8;box-shadow:-10px 0 40px rgba(0,0,0,0.5);">
+      <h2 style="margin-bottom:30px;color:#38bdf8;font-size:2rem;">🛒 Carrito Inteligente</h2>
+      <div id="cart-items"></div>
+      <h3 style="margin-top:30px;font-size:2rem;">Total: $<span id="cart-total">0</span></h3>
+      <button onclick="closeCart()" class="btn secondary" style="margin-top:20px;width:100%;">Cerrar Carrito</button>
+      <button onclick="checkout()" class="btn primary" style="margin-top:15px;width:100%;">Finalizar Compra</button>
+    </div>
+
+    <button onclick="openCart()" id="floating-cart" style="position:fixed;right:30px;bottom:110px;width:75px;height:75px;border:none;border-radius:50%;background:linear-gradient(135deg,#38bdf8,#2563eb);color:white;font-size:2rem;cursor:pointer;z-index:99999;box-shadow:0 15px 40px rgba(56,189,248,0.5);transition:0.3s;">
+      🛒
+    </button>
+
+    <div class="title">
+      <h2>Tienda Online Inteligente</h2>
+      <p>Descubre nuestros productos tecnológicos más vendidos.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px;">
+      <div class="price-card">
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop" style="width:100%;height:250px;object-fit:cover;border-radius:20px;margin-bottom:20px;">
+        <h3>Smartphone Nova X</h3>
+        <p style="color:#cbd5e1;margin:20px 0;">Smartphone futurista con inteligencia artificial integrada y cámara ultra HD.</p>
+        <div class="price">$799</div>
+        <button class="btn primary" style="width:100%;text-align:center;">Agregar al Carrito</button>
+      </div>
+
+      <div class="price-card">
+        <div class="badge">TOP</div>
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop" style="width:100%;height:250px;object-fit:cover;border-radius:20px;margin-bottom:20px;">
+        <h3>Audífonos Quantum</h3>
+        <p style="color:#cbd5e1;margin:20px 0;">Audio envolvente premium con cancelación inteligente de ruido.</p>
+        <div class="price">$299</div>
+        <button class="btn primary" style="width:100%;text-align:center;">Agregar al Carrito</button>
+      </div>
+
+      <div class="price-card">
+        <img src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?q=80&w=1200&auto=format&fit=crop" style="width:100%;height:250px;object-fit:cover;border-radius:20px;margin-bottom:20px;">
+        <h3>Laptop NovaBook Pro</h3>
+        <p style="color:#cbd5e1;margin:20px 0;">Laptop profesional de alto rendimiento para programación y diseño.</p>
+        <div class="price">$1499</div>
+        <button class="btn primary" style="width:100%;text-align:center;">Agregar al Carrito</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="title">
+      <h2>Opiniones de Clientes</h2>
+      <p>Empresas y usuarios satisfechos con NovaTech AI.</p>
+    </div>
+    <div class="services">
+      <div class="card">
+        <div class="icon-wrapper"><i class="fa-solid fa-star"></i></div>
+        <h3>María López</h3>
+        <p>“La mejor experiencia tecnológica que he tenido. El diseño es increíble y muy moderno.”</p>
+      </div>
+      <div class="card">
+        <div class="icon-wrapper"><i class="fa-solid fa-star"></i></div>
+        <h3>Carlos Vega</h3>
+        <p>“La automatización que implementaron mejoró la productividad de mi empresa.”</p>
+      </div>
+      <div class="card">
+        <div class="icon-wrapper"><i class="fa-solid fa-star"></i></div>
+        <h3>Andrea Ruiz</h3>
+        <p>“Diseño premium, rápido y totalmente futurista. Parece una web de Silicon Valley.”</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboard">
+    <div class="title">
+      <h2>Dashboard Inteligente</h2>
+      <p>Monitoreo de ventas, usuarios y rendimiento en tiempo real.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;">
+      <div class="card">
+        <div class="icon-wrapper"><i class="fa-solid fa-chart-line"></i></div>
+        <h3>Ventas Globales</h3>
+        <h1 id="ventas">0</h1>
+        <p>Ventas registradas automáticamente.</p>
+      </div>
+      <div class="card">
+        <div class="icon-wrapper"><i class="fa-solid fa-users"></i></div>
+        <h3>Usuarios Activos</h3>
+        <h1 id="usuarios">0</h1>
+        <p>Usuarios conectados en la plataforma.</p>
+      </div>
+      <div class="card">
+        <div class="icon-wrapper"><i class="fa-solid fa-microchip"></i></div>
+        <h3>Procesos IA</h3>
+        <h1 id="ia">0</h1>
+        <p>Automatizaciones inteligentes ejecutadas.</p>
+      </div>
+      <div class="card">
+        <div class="icon-wrapper"><i class="fa-solid fa-server"></i></div>
+        <h3>Servidores</h3>
+        <h1 id="server">99%</h1>
+        <p>Rendimiento y uptime garantizado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="title">
+      <h2>Galería Tecnológica</h2>
+      <p>Explora nuestro ecosistema digital futurista.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
+      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop" style="width:100%;border-radius:20px;height:300px;object-fit:cover;transition:0.5s;">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" style="width:100%;border-radius:20px;height:300px;object-fit:cover;transition:0.5s;">
+      <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop" style="width:100%;border-radius:20px;height:300px;object-fit:cover;transition:0.5s;">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop" style="width:100%;border-radius:20px;height:300px;object-fit:cover;transition:0.5s;">
+    </div>
+  </section>
+
+  <section>
+    <div class="title">
+      <h2>Preguntas Frecuentes</h2>
+      <p>Información importante sobre nuestros servicios y productos.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px;max-width:1000px;margin:auto;">
+      <div class="card">
+        <h3>¿Qué servicios ofrece NovaTech AI?</h3>
+        <p>Desarrollo web, aplicaciones móviles, IA, automatización y cloud computing.</p>
+      </div>
+      <div class="card">
+        <h3>¿La página es responsive?</h3>
+        <p>Sí, funciona perfectamente en celulares, tablets y computadoras.</p>
+      </div>
+      <div class="card">
+        <h3>¿Ofrecen soporte técnico?</h3>
+        <p>Contamos con soporte premium 24/7 para clientes empresariales.</p>
+      </div>
+      <div class="card">
+        <h3>¿Puedo personalizar mi proyecto?</h3>
+        <p>Totalmente. Adaptamos cada solución a las necesidades del cliente.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="contact">
+      <h2>Impulsa tu Emprendimiento</h2>
+      <p>Contáctanos y transforma tus ideas en soluciones digitales modernas.</p>
+      <form id="contactForm">
+        <input type="text" placeholder="Tu nombre" required>
+        <input type="email" placeholder="Tu correo electrónico" required>
+        <textarea placeholder="Describe tu proyecto..." required></textarea>
+        <button class="btn primary" type="submit">Enviar mensaje</button>
+      </form>
+    </div>
+  </section>
+
+  <section>
+    <div class="contact">
+      <h2>Suscríbete a NovaTech AI</h2>
+      <p>Recibe novedades, descuentos y noticias tecnológicas.</p>
+      <form id="newsletterForm">
+        <input type="email" placeholder="Ingresa tu correo" required>
+        <button class="btn primary" type="submit">Suscribirme</button>
+      </form>
+    </div>
+  </section>
+
+  <div id="progress-bar" style="position:fixed;top:0;left:0;height:5px;width:0%;background:linear-gradient(90deg,#38bdf8,#a855f7);z-index:999999;"></div>
+
+  <button id="topBtn" style="position:fixed;bottom:30px;right:30px;width:60px;height:60px;border:none;border-radius:50%;background:#38bdf8;color:#020617;font-size:1.5rem;cursor:pointer;display:none;z-index:99999;box-shadow: 0 5px 15px rgba(56,189,248,0.4);">
+    ↑
+  </button>
+
+  <footer>
+    <p>© 2026 NovaTech AI | Innovación • Tecnología • Futuro</p>
+  </footer>
+
+  <script>
+    // ==========================================
+    // SISTEMA DE CARRITO DE COMPRAS (CORREGIDO)
+    // ==========================================
+    let cart = [];
+
+    function openCart(){
+      document.getElementById('cart-panel').style.right = '0';
+    }
+
+    function closeCart(){
+      document.getElementById('cart-panel').style.right = '-450px';
+    }
+
+    // ARREGLADO: Selección exclusiva de botones dentro de la tienda
+    const productButtons = document.querySelectorAll('#tienda .price-card .btn');
+
+    const products = [
+      { name: 'Smartphone Nova X', price: 799 },
+      { name: 'Audífonos Quantum', price: 299 },
+      { name: 'Laptop NovaBook Pro', price: 1499 }
+    ];
+
+    productButtons.forEach((button, index) => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const product = { ...products[index] }; // Clonar el objeto base
+        
+        const existing = cart.find(item => item.name === product.name);
+        if(existing){
+          existing.quantity += 1;
+        } else {
+          product.quantity = 1;
+          cart.push(product);
+        }
+
+        renderCart();
+        openCart();
+        createFloatingMessage(product.name + ' agregado al carrito 🚀');
+      });
+    });
+
+    function renderCart(){
+      const cartItems = document.getElementById('cart-items');
+      const total = document.getElementById('cart-total');
+
+      cartItems.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;background:#111827;padding:15px;border-radius:15px;">
+          <div>
+            <h3 style="color:#38bdf8;">🛒 Productos</h3>
+            <p style="font-size:0.9rem;color:#94a3b8;">Compra inteligente NovaTech</p>
+          </div>
+          <div style="background:#38bdf8;color:#020617;padding:10px 15px;border-radius:12px;font-weight:bold;">
+            ${cart.reduce((acc, item) => acc + item.quantity, 0)}
+          </div>
+        </div>
+      `;
+
+      let totalPrice = 0;
+
+      cart.forEach((item, index) => {
+        totalPrice += item.price * item.quantity;
+        const div = document.createElement('div');
+        div.style.background = '#1e293b';
+        div.style.padding = '20px';
+        div.style.marginBottom = '20px';
+        div.style.borderRadius = '15px';
+        div.style.border = '1px solid rgba(255,255,255,0.1)';
+
+        div.innerHTML = `
+          <div style="display:flex;gap:15px;align-items:center;">
+            <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png" style="width:50px;height:50px;border-radius:10px;background:#020617;padding:5px;">
+            <div>
+              <h3 style="color:#38bdf8; font-size:1.1rem;">${item.name}</h3>
+              <p style="color:#94a3b8;font-size:0.8rem;">Premium Tech</p>
+            </div>
+          </div>
+          <p style="margin:10px 0;font-size:1.2rem;font-weight:bold;">$${item.price * item.quantity}</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <button onclick="decreaseQuantity(${index})" style="width:30px;height:30px;border:none;border-radius:8px;background:#0f172a;color:white;cursor:pointer;">-</button>
+              <span style="font-weight:bold;">${item.quantity}</span>
+              <button onclick="increaseQuantity(${index})" style="width:30px;height:30px;border:none;border-radius:8px;background:#38bdf8;color:#020617;cursor:pointer;font-weight:bold;">+</button>
+            </div>
+            <button onclick="removeItem(${index})" style="background:#ef4444;color:white;border:none;padding:5px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:0.9rem;">Eliminar</button>
+          </div>
+        `;
+        cartItems.appendChild(div);
+      });
+
+      total.innerHTML = totalPrice;
+    }
+
+    function increaseQuantity(index){
+      cart[index].quantity += 1;
+      renderCart();
+    }
+
+    function decreaseQuantity(index){
+      if(cart[index].quantity > 1){
+        cart[index].quantity -= 1;
+      }else{
+        cart.splice(index,1);
+      }
+      renderCart();
+    }
+
+    function removeItem(index){
+      cart.splice(index,1);
+      renderCart();
+      createFloatingMessage('Producto eliminado ❌');
+    }
+
+    function checkout() {
+      if(cart.length === 0) {
+        createFloatingMessage('El carrito está vacío 🛒');
+        return;
+      }
+      createNotification('🎉 ¡Procesando Compra con éxito!');
+      cart = [];
+      renderCart();
+      closeCart();
+    }
+
+    // ==========================================
+    // NOTIFICACIONES FLOTANTES Y DE SISTEMA
+    // ==========================================
+    function createFloatingMessage(text){
+      const message = document.createElement('div');
+      message.innerHTML = text;
+      message.style.position = 'fixed';
+      message.style.top = '120px';
+      message.style.left = '50%';
+      message.style.transform = 'translateX(-50%)';
+      message.style.background = 'linear-gradient(135deg,#38bdf8,#2563eb)';
+      message.style.padding = '18px 35px';
+      message.style.borderRadius = '15px';
+      message.style.color = 'white';
+      message.style.fontWeight = 'bold';
+      message.style.zIndex = '999999';
+      message.style.boxShadow = '0 15px 40px rgba(0,0,0,0.4)';
+      message.style.animation = 'pulse 0.3s ease';
+
+      document.body.appendChild(message);
+      setTimeout(() => { message.remove(); }, 2500);
+    }
+
+    // ARREGLADO: Función autocompletada que estaba cortada
+    function createNotification(text){
+      const notification = document.createElement('div');
+      notification.innerHTML = `<strong>NovaTech AI:</strong> ${text}`;
+      notification.style.position = 'fixed';
+      notification.style.top = '100px';
+      notification.style.right = '30px';
+      notification.style.background = '#0f172a';
+      notification.style.padding = '20px 30px';
+      notification.style.borderRadius = '12px';
+      notification.style.border = '2px solid #38bdf8';
+      notification.style.color = 'white';
+      notification.style.zIndex = '999999';
+      notification.style.boxShadow = '0 10px 30px rgba(56,189,248,0.2)';
+      notification.style.transition = '0.5s';
+
+      document.body.appendChild(notification);
+      setTimeout(() => { notification.remove(); }, 3500);
+    }
+
+    // Interceptar formularios para mayor interactividad
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      createNotification('¡Mensaje enviado! Te contactaremos pronto.');
+      e.target.reset();
+    });
+
+    document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      createNotification('¡Suscripción exitosa al boletín!');
+      e.target.reset();
+    });
+
+    // ==========================================
+    // CONTADORES DINÁMICOS ANIMADOS
+    // ==========================================
+    function animateValue(id, start, end, duration) {
+      let current = start;
+      const range = end - start;
+      const increment = end > start ? Math.ceil(range / (duration / 16)) : -1;
+      const obj = document.getElementById(id);
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+          clearInterval(timer);
+          current = end;
+        }
+        obj.innerHTML = current.toLocaleString() + (id === 'ventas' ? '+' : '');
+      }, 16);
+    }
+
+    animateValue('ventas', 0, 1500, 2000);
+    animateValue('usuarios', 0, 9500, 2000);
+    animateValue('ia', 0, 3200, 2000);
+
+    // ==========================================
+    // BARRA DE PROGRESO Y BOTÓN SCROLL TOP
+    // ==========================================
+    window.onscroll = function(){
+      let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      let scrolled = (winScroll / height) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+
+      if(winScroll > 400){
+        document.getElementById('topBtn').style.display = 'block';
+      }else{
+        document.getElementById('topBtn').style.display = 'none';
+      }
+    };
+
+    document.getElementById('topBtn').addEventListener('click', () => {
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    // ==========================================
+    // MICRO-INTERACCIONES DINÁMICAS (CSS INYECTADO)
+    // ==========================================
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes floatCart{
+        0%{transform:translateY(0px);}
+        50%{transform:translateY(-10px);}
+        100%{transform:translateY(0px);}
+      }
+      #floating-cart{ animation:floatCart 2s infinite; }
+      .price-card { position: relative; overflow: hidden; }
+      .price-card::after{
+        content:''; position:absolute; top:-100px; left:-100px; width:250px; height:250px;
+        background:rgba(56,189,248,0.05); filter:blur(80px); transition:0.5s; pointer-events: none;
+      }
+      .price-card:hover::after{ transform:scale(1.8); }
+    `;
+    document.head.appendChild(style);
+
+    // Efecto magnético ligero en botones
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+      button.addEventListener('mousemove', (e) => {
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width/2;
+        const y = e.clientY - rect.top - rect.height/2;
+        button.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.03)`;
+      });
+      button.addEventListener('mouseleave', () => {
+        button.style.transform = 'translate(0px,0px) scale(1)';
+      });
+    });
+
+    // Animación cíclica suave del logo
+    const logo = document.querySelector('.logo img');
+    setInterval(() => {
+      logo.style.transform = 'rotate(360deg)';
+      logo.style.transition = '1s ease-in-out';
+      setTimeout(() => { logo.style.transform = 'rotate(0deg)'; logo.style.transition = '0s'; }, 1000);
+    }, 6000);
+  </script>
+</body>
+</html>
